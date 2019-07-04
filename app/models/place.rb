@@ -2,7 +2,7 @@ class Place < ApplicationRecord
   paginates_per 3
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, :photos
   
   geocoded_by :address
   after_validation :geocode

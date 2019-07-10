@@ -1,3 +1,4 @@
 class Photo < ApplicationRecord
-  belongs_to :place, :user
+  belongs_to :place
+  
 end

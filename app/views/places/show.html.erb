@@ -95,9 +95,17 @@
 </div>
 
 <div>
-  <%= simple_form_for @photo, url: place_photos_path(@photo) do |f| %>
+  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
     <%= f.input :caption %>
+    <%= f.input :picture %>
     <%= f.submit "Add a photo", class: 'btn btn-primary' %>
   <% end %> 
+</div>
+
+<div class="row col-10 offset-1">
+  <% @place.photos.each do |photo| %>
+  <%= image_tag 'photo.picture.url', class: 'img-fluid' %>
+  <i><%= photo.caption %></i>
+<% end %>
 </div>
 

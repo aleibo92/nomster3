@@ -18,14 +18,7 @@
        </blockquote>
       </div>
     <% end %>
-<div class="col-10 offset-1">
-  <% if place.photos.present? %>
-  <% @place.photo.each do |photo| %>
-  <%= image_tag photo.picture.to_s, class: 'img-fluid' %>
-  <% end %>
-  <i><%= photo.caption %></i>
-  <% end %>
-</div>
+  </div>
 </div>
 
 <% end %>

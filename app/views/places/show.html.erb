@@ -47,7 +47,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="comment_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,7 +74,7 @@
 <div class="col-10 offset-1">
 <h1 class="float-left">Comments</h1>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#comment_modal">
   Add a comment
 </button>
 </div>
@@ -93,19 +93,42 @@
     </div>
   <% end %>
 </div>
+<br /><br />
 
-<div>
-  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-    <%= f.input :caption %>
-    <%= f.input :picture %>
-    <%= f.submit "Add a photo", class: 'btn btn-primary' %>
-  <% end %> 
+<!-- Modal -->
+<div class="modal fade" id="picture_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add a picture!</h4>
+      </div>
+      <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+      <div class="modal-body">         
+           <%= f.input :caption %>
+           <%= f.input :picture %> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit "Add a photo", class: 'btn btn-primary' %>
+       </div>
+     <% end %>      
+    </div>
+  </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#picture_modal">
+  Add a picture!
+</button>
+
 
 <div class="col-10 offset-1">
   <% @place.photos.each do |photo| %>
-  <%= image_tag photo.picture, class: 'img-fluid' %>
+  <%= image_tag photo.picture.to_s, class: 'img-fluid' %>
   <i><%= photo.caption %></i>
 <% end %>
 </div>
-

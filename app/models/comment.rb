@@ -14,3 +14,4 @@ RATINGS = {
     RATINGS.invert[self.rating]
   end
 end
+
